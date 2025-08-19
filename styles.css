@@ -80,11 +80,11 @@
 }
 
 .custom-header p {
-    color: var(--text-secondary);
+    color: #d1d5db; /* Lighter gray, more white */
     font-size: 1.1rem;
     margin: 0.5rem 0 0 0;
     font-weight: 500;
-    opacity: 0.85; /* More visible but not too bright */
+    opacity: 0.95; /* Much more visible */
 }
 
 /* Neon-style tabs - DIMMED VERSION */
@@ -115,10 +115,11 @@
 }
 
 .stTabs [data-baseweb="tab"][aria-selected="true"] {
-    background: var(--gradient-accent);
-    color: var(--text-primary);
+    background: var(--card-bg);
+    color: var(--text-secondary);
     border-color: var(--accent-color);
-    box-shadow: 0 0 15px rgba(0, 212, 170, 0.2); /* Reduced from 0.3 */
+    box-shadow: 0 0 10px rgba(0, 212, 170, 0.15); /* Further reduced */
+    opacity: 0.8; /* Make selected tab less bright */
 }
 
 /* Cyberpunk-style cards - DIMMED VERSION */
