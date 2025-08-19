@@ -38,7 +38,7 @@ def chat_interface():
             elif isinstance(message, AIMessage):
                 st.markdown(f"""
                 <div class="assistant-message slide-in">
-                    <strong> Assistant:</strong><br>{message.content}
+                    <strong>🤖 :</strong><br>{message.content}
                 </div>
                 """, unsafe_allow_html=True)
     
