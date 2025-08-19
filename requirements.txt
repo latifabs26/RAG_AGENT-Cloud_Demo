@@ -1,0 +1,17 @@
+pypdf
+langchain
+chromadb # Vector storage
+pytest
+boto3
+langchain-community
+langchain-huggingface
+streamlit
+plotly 
+pandas
+statsmodels
+python-dotenv
+requests
+openai
+langchain_cohere
+langchain-core
+langchain-text-splitters
