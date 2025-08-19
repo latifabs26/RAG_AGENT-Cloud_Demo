@@ -1,0 +1,711 @@
+/* Import modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Root variables for dark theme */
+:root {
+    --primary-bg: #0a0a0f;
+    --secondary-bg: #1a1a2e;
+    --accent-bg: #16213e;
+    --card-bg: #1e1e2e;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #00d4aa;
+    --accent-secondary: #4ecdc4; /* Removed red, using teal instead */
+    --accent-tertiary: #4ecdc4;
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #4ecdc4 100%);
+    --gradient-danger: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%); /* Green gradient */
+    --shadow-default: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 16px 64px rgba(0, 0, 0, 0.5);
+    --border-radius: 16px;
+    --border-radius-small: 8px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global dark theme setup */
+.main {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Override Streamlit's default background */
+.stApp {
+    background: var(--primary-bg);
+}
+
+/* Custom glassmorphism header - SMALLER VERSION */
+.custom-header {
+    background: linear-gradient(135deg, 
+        rgba(0, 212, 170, 0.08) 0%, /* Reduced opacity from 0.1 to 0.08 */
+        rgba(118, 75, 162, 0.08) 50%, 
+        rgba(102, 126, 234, 0.08) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-default);
+}
+
+.custom-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-accent);
+    opacity: 0.08; /* Reduced from 0.1 */
+    z-index: -1;
+}
+
+.custom-header h1 {
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    letter-spacing: -0.02em;
+    opacity: 0.9; /* Slightly reduce brightness */
+}
+
+.custom-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+    font-weight: 400;
+}
+
+/* Neon-style tabs - DIMMED VERSION */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 1rem;
+    background: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-small);
+    padding: 1rem 2rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    background: var(--gradient-accent);
+    color: var(--text-primary);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 212, 170, 0.2); /* Reduced from 0.3 */
+}
+
+/* Cyberpunk-style cards - DIMMED VERSION */
+.feature-card, .chat-container, .summary-card, .search-result, .filter-panel, .stats-panel {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-default);
+    transition: var(--transition);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.feature-card:hover, .search-result:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-color);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    opacity: 0.8; /* Slightly dimmed */
+}
+
+/* Neon text effects - DIMMED */
+.feature-title, .summary-title, .search-result-title, .filter-title, .stats-title {
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    text-align: center;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.9; /* Slightly dimmed */
+}
+
+/* Chat messages - REMOVED RED, DIMMED NEON */
+.user-message {
+    background: var(--secondary-bg);
+    border: 2px solid var(--accent-color);
+    color: var(--text-primary);
+    padding: 1.5rem;
+    border-radius: 20px 20px 4px 20px;
+    margin: 1rem 0;
+    box-shadow: 0 0 12px rgba(0, 212, 170, 0.15); /* Reduced glow */
+    font-weight: 500;
+    position: relative;
+}
+
+.user-message::before {
+    content: '👤';
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.assistant-message {
+    background: var(--accent-bg);
+    border: 2px solid var(--accent-tertiary); /* Changed from accent-secondary (red) to tertiary (teal) */
+    color: var(--text-primary);
+    padding: 1.5rem;
+    border-radius: 20px 20px 20px 4px;
+    margin: 1rem 0;
+    box-shadow: 0 0 12px rgba(78, 205, 196, 0.15); /* Changed to teal glow, reduced intensity */
+    position: relative;
+}
+
+.assistant-message::before {
+    content: '🤖';
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: var(--accent-tertiary); /* Changed from accent-secondary to tertiary */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+/* Holographic summary card - DIMMED */
+.summary-card {
+    background: linear-gradient(135deg, 
+        var(--card-bg) 0%, 
+        rgba(0, 212, 170, 0.08) 50%, /* Reduced opacity */
+        var(--card-bg) 100%);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.15); /* Reduced glow */
+}
+
+.summary-content {
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+/* Futuristic search results - DIMMED */
+.search-result {
+    border-left: 4px solid var(--accent-tertiary);
+    transition: var(--transition);
+}
+
+.search-result:hover {
+    transform: translateX(8px);
+    border-left-color: var(--accent-color);
+    box-shadow: 0 0 18px rgba(78, 205, 196, 0.2); /* Reduced glow */
+}
+
+.search-result-score {
+    background: var(--gradient-accent);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.85rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.2); /* Reduced glow */
+    opacity: 0.9; /* Slightly dimmed */
+}
+
+.search-result-content {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+/* Neon metric cards - DIMMED */
+.metric-card {
+    background: var(--card-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    padding: 1.5rem;
+    margin: 0.5rem 0;
+    box-shadow: 0 0 15px rgba(0, 212, 170, 0.15); /* Reduced glow */
+    transition: var(--transition);
+}
+
+.metric-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.25); /* Reduced glow */
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0.9; /* Slightly dimmed */
+}
+
+.metric-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+/* SIDEBAR METRIC CARDS - MATCH BUTTON COLOR */
+.sidebar-metric-card {
+    background: #22c55e; /* Same green as buttons */
+    border: 1px solid #16a34a; /* Same border as buttons */
+    border-radius: 8px;
+    text-align: center;
+    padding: 0.75rem;
+    margin: 0.25rem 0;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    min-height: 80px; /* Fixed minimum height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sidebar-metric-card:hover {
+    background: #16a34a; /* Darker green on hover, same as button hover */
+    border-color: #15803d;
+}
+
+.sidebar-metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white; /* White text on green background */
+    margin-bottom: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.2;
+}
+
+.sidebar-metric-label {
+    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* NEW SIDEBAR CONTROL BUTTONS - STYLED LIKE NEON METRIC CARDS */
+.sidebar-control-button {
+    background: var(--card-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: var(--border-radius-small);
+    text-align: center;
+    padding: 0.75rem;
+    margin: 0.25rem 0;
+    transition: var(--transition);
+    box-shadow: 0 0 15px rgba(0, 212, 170, 0.15);
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sidebar-control-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.25);
+    border-color: var(--accent-tertiary);
+}
+
+.sidebar-control-button:active {
+    transform: scale(1.02);
+}
+
+.sidebar-control-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    margin-bottom: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.2;
+    opacity: 0.9;
+}
+
+.sidebar-control-label {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* ANALYTICS BUTTON - SPECIAL STYLING */
+.analytics-button {
+    background: #8b5cf6 !important; /* Purple background */
+    border: 1px solid #7c3aed !important;
+}
+
+.analytics-button:hover {
+    background: #7c3aed !important;
+    border-color: #6d28d9 !important;
+}
+
+/* HIDE THE ACTUAL STREAMLIT BUTTONS */
+button[key="clear_chat_hidden"],
+button[key="download_export_hidden"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Cyberpunk buttons - MAIN CONTENT ONLY - DIMMED */
+.stButton > button {
+    background: var(--gradient-accent);
+    color: var(--text-primary);
+    border: 2px solid var(--accent-color);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 15px rgba(0, 212, 170, 0.2); /* Reduced glow */
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton > button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.3); /* Reduced glow */
+    border-color: var(--accent-tertiary);
+}
+
+.stButton > button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent); /* Reduced opacity */
+    transition: var(--transition);
+}
+
+.stButton > button:hover::before {
+    left: 100%;
+}
+
+/* SIDEBAR CONTROL BUTTONS - SAME STYLE AS QUICK STATS */
+.css-1d391kg .stButton > button,
+.stSidebar .stButton > button {
+    background: var(--card-bg) !important;
+    border: 2px solid var(--accent-color) !important;
+    border-radius: var(--border-radius-small) !important;
+    color: var(--accent-color) !important;
+    font-weight: 800 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 1rem !important;
+    padding: 0.75rem 1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    box-shadow: 0 0 15px rgba(0, 212, 170, 0.15) !important;
+    transition: var(--transition) !important;
+    cursor: pointer !important;
+}
+
+.css-1d391kg .stButton > button:hover,
+.stSidebar .stButton > button:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.25) !important;
+    border-color: var(--accent-tertiary) !important;
+}
+
+
+.css-1d391kg .stButton > button::before,
+.stSidebar .stButton > button::before {
+    display: none !important;
+}
+
+/* File upload with neon border - DIMMED */
+.upload-area {
+    background: var(--secondary-bg);
+    border: 2px dashed var(--accent-color);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    text-align: center;
+    margin: 1.5rem 0;
+    transition: var(--transition);
+    position: relative;
+}
+
+.upload-area:hover {
+    border-color: var(--accent-tertiary);
+    background: rgba(0, 212, 170, 0.03); /* Reduced opacity */
+    box-shadow: 0 0 18px rgba(0, 212, 170, 0.15); /* Reduced glow */
+}
+
+/* File info cards */
+.file-info {
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-color);
+    padding: 1rem;
+    border-radius: var(--border-radius-small);
+    margin: 0.5rem 0;
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.08); /* Reduced glow */
+    transition: var(--transition);
+}
+
+.file-info:hover {
+    transform: translateX(5px);
+    border-color: var(--accent-tertiary);
+}
+
+/* Sidebar styling */
+.css-1d391kg, .stSidebar {
+    background: var(--secondary-bg);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Source items with code-like appearance */
+.source-item {
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-color);
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-small);
+    margin: 0.5rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    transition: var(--transition);
+    opacity: 0.9; /* Slightly dimmed */
+}
+
+.source-item:hover {
+    background: rgba(0, 212, 170, 0.08); /* Reduced opacity */
+    transform: translateX(3px);
+}
+
+/* Filter items */
+.filter-item {
+    background: var(--secondary-bg);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-small);
+    padding: 1rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-secondary);
+}
+
+.filter-item:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.filter-item.active {
+    background: var(--gradient-accent);
+    color: var(--text-primary);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 212, 170, 0.2); /* Reduced glow */
+}
+
+/* Chat input with glow effect - DIMMED */
+.stChatInput > div > div > input {
+    background: var(--secondary-bg);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+    font-family: 'Poppins', sans-serif;
+}
+
+.stChatInput > div > div > input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 212, 170, 0.2); /* Reduced glow */
+    outline: none;
+}
+
+.stChatInput > div > div > input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Progress indicators - DIMMED */
+.progress-container {
+    background: var(--secondary-bg);
+    border-radius: 25px;
+    height: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress-bar {
+    background: var(--gradient-accent);
+    height: 100%;
+    border-radius: 25px;
+    transition: width 0.6s ease;
+    box-shadow: 0 0 8px rgba(0, 212, 170, 0.3); /* Reduced glow */
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-accent);
+    border-radius: 4px;
+    opacity: 0.8; /* Slightly dimmed */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(0, 212, 170, 0.2); /* Reduced opacity */
+    color: var(--text-primary);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .custom-header h1 {
+        font-size: 2rem;
+    }
+    
+    .custom-header p {
+        font-size: 0.9rem;
+    }
+    
+    .feature-card, .chat-container {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+}
+
+/* Advanced animations - DIMMED */
+@keyframes neonPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(0, 212, 170, 0.2); } /* Reduced */
+    50% { box-shadow: 0 0 25px rgba(0, 212, 170, 0.4); } /* Reduced */
+}
+
+@keyframes slideInFromLeft {
+    0% { transform: translateX(-100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    0% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.slide-in {
+    animation: slideInFromLeft 0.5s ease-out;
+}
+
+.neon-pulse {
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+/* Hide Streamlit branding */
+#MainMenu, footer, header, .stDeployButton {
+    visibility: hidden !important;
+    display: none !important;
+}
+
+/* Custom selectbox styling */
+.stSelectbox > div > div {
+    background: var(--secondary-bg);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-small);
+    color: var(--text-primary);
+}
+
+/* Custom text input styling */
+.stTextInput > div > div > input {
+    background: var(--secondary-bg);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-small);
+    color: var(--text-primary);
+}
+
+.stTextInput > div > div > input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 212, 170, 0.2); /* Reduced glow */
+}
