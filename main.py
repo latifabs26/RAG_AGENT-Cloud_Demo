@@ -22,7 +22,7 @@ from rag_utils import (
 
 def chat_interface():
     """Clean chat interface implementation"""
-    st.markdown("### 💬 Chat with Your Documents")
+    st.markdown("#### Chat with Your Documents")
     
     # Display chat messages
     chat_container = st.container()

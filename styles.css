@@ -66,7 +66,7 @@
 }
 
 .custom-header h1 {
-    color: var(--text-primary);
+    color: var(--text-secondary);
     font-size: 2.5rem;
     font-weight: 800;
     margin: 0;
@@ -76,7 +76,7 @@
     background-clip: text;
     text-shadow: none;
     letter-spacing: -0.02em;
-    opacity: 0.9; /* Slightly reduce brightness */
+    opacity: 0.7; /* Further reduce brightness */
 }
 
 .custom-header p {
@@ -84,6 +84,7 @@
     font-size: 1rem;
     margin: 0.5rem 0 0 0;
     font-weight: 400;
+    opacity: 0.6; /* Make subtitle even more subtle */
 }
 
 /* Neon-style tabs - DIMMED VERSION */
