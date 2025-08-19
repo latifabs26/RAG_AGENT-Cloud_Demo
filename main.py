@@ -377,9 +377,9 @@ def sidebar_content():
         
         col1, col2 = st.columns(2)
         with col1:
-            create_metric_card("Documents", stats["unique_sources"])
+            create_metric_card("Files", stats["unique_sources"])
         with col2:
-            create_metric_card("Chunks", stats["total_chunks"])
+            create_metric_card("Sections", stats["total_chunks"])
 
 def main():
     # Streamlit page configuration
