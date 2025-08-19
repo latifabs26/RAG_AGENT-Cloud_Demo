@@ -146,9 +146,11 @@ def load_css():
             letter-spacing: -0.025em;
         }
         .custom-header p { 
-            color: rgba(255,255,255,0.9); 
-            font-size: 1.125rem; 
+            color: rgba(255,255,255,0.95); 
+            font-size: 1.375rem; 
+            font-weight: 500;
             margin: 0.5rem 0 0 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         .metric-card {
             background: white;
@@ -561,7 +563,6 @@ def create_custom_header():
     <div class="custom-header fade-in">
         <h1>Synapse</h1>
         <p>Your Advanced RAG Assistant</p>
-        <p>Analyze • Chat • Search • Summarize</p>
     </div>
     """, unsafe_allow_html=True)
 
