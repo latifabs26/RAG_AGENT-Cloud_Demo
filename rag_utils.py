@@ -561,7 +561,7 @@ def create_custom_header():
     <div class="custom-header fade-in">
         <h1>Synapse</h1>
         <p>Your Advanced RAG Assistant</p>
-        <p>Intelligent Document Analysis • Chat • Search • Summarize</p>
+        <p>Analyze • Chat • Search • Summarize</p>
     </div>
     """, unsafe_allow_html=True)
 
