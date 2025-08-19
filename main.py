@@ -384,7 +384,7 @@ def sidebar_content():
 def main():
     # Streamlit page configuration
     st.set_page_config(
-        page_title="Synapse, Your RAG-powered Assistant ", 
+        page_title="Synapse Advanced RAG Assistant", 
         page_icon="🔍",
         layout="wide",
         initial_sidebar_state="expanded"
