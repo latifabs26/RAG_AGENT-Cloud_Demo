@@ -284,7 +284,7 @@ def analytics_interface():
 def sidebar_content():
     """Clean sidebar with file upload and controls"""
     with st.sidebar:
-        st.markdown("### 📄 Document Upload")
+        st.markdown("### 📋 Document Upload")
         
         uploaded_files = st.file_uploader(
             "Choose files to upload",
