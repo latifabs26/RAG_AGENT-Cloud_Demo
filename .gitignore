@@ -59,6 +59,8 @@ data/
 *.csv
 *.pdf
 *.txt
+# Exception: Allow packages.txt for Streamlit Cloud
+!packages.txt
 
 # Streamlit
 .streamlit/
