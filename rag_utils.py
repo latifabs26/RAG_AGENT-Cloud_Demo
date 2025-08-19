@@ -1,5 +1,8 @@
 import streamlit as st
 import sys
+# Fix sqlite3 version for Streamlit Cloud
+__import__('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import io
 import os
 import tempfile

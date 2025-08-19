@@ -1,6 +1,7 @@
 pypdf
 langchain
 chromadb # Vector storage
+pysqlite3-binary
 pytest
 boto3
 langchain-community
