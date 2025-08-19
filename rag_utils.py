@@ -561,7 +561,7 @@ def create_custom_header():
     """Create a sophisticated custom header"""
     st.markdown("""
     <div class="custom-header fade-in">
-        <h1>Synapse</h1>
+        <h1>SYNAPSE</h1>
         <p>Your Advanced RAG Assistant</p>
     </div>
     """, unsafe_allow_html=True)
