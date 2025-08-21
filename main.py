@@ -417,7 +417,7 @@ def main():
                 st.error(f"Failed to initialize: {str(e)}")
                 st.stop()
     
-    # Initialize chat history (session-isolated)
+    ## Initialize chat history (session-isolated)
     if "messages" not in st.session_state:
         st.session_state.messages = []
         welcome_msg = "👋 Welcome! I can chat, summarize, search, and analyze your documents. Upload files using the sidebar to get started."
