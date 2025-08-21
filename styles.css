@@ -530,12 +530,15 @@ div[data-testid="stSidebar"] {
     }
 }
 
-/* Mobile sidebar - let Streamlit handle everything naturally */
+/* Mobile sidebar - ensure visibility but natural behavior */
 @media (max-width: 768px) {
     section[data-testid="stSidebar"],
     [data-testid="stSidebar"],
     .css-1d391kg {
-        /* Remove all forced positioning on mobile */
+        /* Ensure visibility on mobile */
+        display: block !important;
+        visibility: visible !important;
+        /* But let Streamlit handle positioning naturally */
         position: relative !important;
         width: auto !important;
         min-width: auto !important;
