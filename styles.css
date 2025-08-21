@@ -405,18 +405,6 @@
     border-color: #6d28d9 !important;
 }
 
-/* HIDE THE ACTUAL STREAMLIT BUTTONS */
-button[key="clear_chat_hidden"],
-button[key="download_export_hidden"] {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    background: transparent !important;
-}
 
 /* Cyberpunk buttons - MAIN CONTENT ONLY - DIMMED */
 .stButton > button {
