@@ -420,7 +420,7 @@ def main():
     # Initialize chat history (session-isolated)
     if "messages" not in st.session_state:
         st.session_state.messages = []
-        welcome_msg = "👋 Welcome to your private workspace! I can chat, summarize, search, and analyze your documents. Your data is isolated from other users - upload files using the sidebar to get started."
+        welcome_msg = "👋 Welcome! I can chat, summarize, search, and analyze your documents. Upload files using the sidebar to get started."
         st.session_state.messages.append(AIMessage(welcome_msg))
     
     # Sidebar content
