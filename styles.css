@@ -527,6 +527,34 @@ button[key="download_export_hidden"] {
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Fix sidebar collapse button */
+button[title="Close sidebar"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+button[title="Open sidebar"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    z-index: 999999 !important;
+    background: var(--accent-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+/* Ensure sidebar toggle functionality */
+.css-1lcbmhc, .css-1d391kg {
+    transition: margin-left 0.3s ease !important;
+}
+
 /* Source items with code-like appearance */
 .source-item {
     background: var(--accent-bg);
