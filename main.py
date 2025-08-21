@@ -38,7 +38,7 @@ def chat_interface():
             elif isinstance(message, AIMessage):
                 st.markdown(f"""
                 <div class="assistant-message slide-in">
-                    <strong>🤖 :</strong><br>{message.content}
+                    <strong>🤖 :</strong>{message.content}
                 </div>
                 """, unsafe_allow_html=True)
     
@@ -435,7 +435,7 @@ def main():
     st.markdown("""
     <div style="text-align: center; color: #64748b; font-size: 0.9rem; margin-top: 2rem;">
         - Advanced RAG Assistant -<br>
-        Features:Intelligent Document Analysis • Smart Chat • Document Summarization • Advanced Search • Analytics
+        Features: Intelligent Document Analysis • Smart Chat • Document Summarization • Advanced Search • Analytics
     </div>
     """, unsafe_allow_html=True)
 
