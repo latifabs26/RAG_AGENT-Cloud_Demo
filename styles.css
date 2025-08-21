@@ -562,6 +562,20 @@ button[data-testid="collapsedControl"] {
     transition: margin-left 0.3s ease !important;
 }
 
+/* Force sidebar to be visible on page load */
+.css-1d391kg {
+    display: block !important;
+    visibility: visible !important;
+    width: 21rem !important;
+    min-width: 21rem !important;
+    max-width: 21rem !important;
+}
+
+/* Force main content to respect sidebar */
+.css-k1vhr4, .css-18e3th9 {
+    margin-left: 21rem !important;
+}
+
 /* Source items with code-like appearance */
 .source-item {
     background: var(--accent-bg);

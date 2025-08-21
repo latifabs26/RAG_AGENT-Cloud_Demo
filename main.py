@@ -393,6 +393,13 @@ def main():
     # Load CSS
     load_css()
     
+    # Add manual sidebar toggle (for when CSS fails)
+    col1, col2, col3 = st.columns([1, 8, 1])
+    with col1:
+        if st.button("☰ Menu", help="Toggle sidebar", key="sidebar_toggle"):
+            # Force refresh to show sidebar
+            st.rerun()
+    
     # Create header
     create_custom_header()
     
