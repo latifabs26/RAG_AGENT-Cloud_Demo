@@ -393,30 +393,6 @@ def main():
     # Load CSS
     load_css()
     
-    # Force sidebar to show with smart collapse detection
-    st.markdown("""
-    <script>
-    function ensureSidebarVisible() {
-        const sidebar = document.querySelector('[data-testid="stSidebar"]');
-        if (sidebar) {
-            sidebar.style.display = 'block';
-            sidebar.style.visibility = 'visible';
-            
-            // Only set transform if it's completely hidden
-            const transform = window.getComputedStyle(sidebar).transform;
-            if (transform.includes('translateX(-100%)') || !transform || transform === 'none') {
-                sidebar.style.transform = 'translateX(0px)';
-            }
-        }
-    }
-    
-    // Run immediately and after a delay
-    ensureSidebarVisible();
-    setTimeout(ensureSidebarVisible, 100);
-    setTimeout(ensureSidebarVisible, 500);
-    </script>
-    """, unsafe_allow_html=True)
-    
     # Create header
     create_custom_header()
     
