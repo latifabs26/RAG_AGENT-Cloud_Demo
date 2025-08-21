@@ -393,44 +393,23 @@ def main():
     # Load CSS
     load_css()
     
-    # Force sidebar visibility with JavaScript
+    # Gentle sidebar fix - only show if completely hidden
     st.markdown("""
     <script>
-    // Force sidebar to show
     setTimeout(function() {
         const sidebar = document.querySelector('[data-testid="stSidebar"]');
         if (sidebar) {
-            sidebar.style.display = 'block';
-            sidebar.style.visibility = 'visible';
-            sidebar.style.transform = 'translateX(0px)';
-            sidebar.style.width = '21rem';
-        }
-        
-        // Also try other selectors
-        const sidebarAlt = document.querySelector('.css-1d391kg');
-        if (sidebarAlt) {
-            sidebarAlt.style.display = 'block';
-            sidebarAlt.style.visibility = 'visible';
-            sidebarAlt.style.transform = 'translateX(0px)';
+            // Only intervene if sidebar is completely missing/hidden
+            const computedStyle = window.getComputedStyle(sidebar);
+            if (computedStyle.display === 'none' || computedStyle.visibility === 'hidden') {
+                sidebar.style.display = 'block';
+                sidebar.style.visibility = 'visible';
+                // Don't force transform - let Streamlit control it
+            }
         }
     }, 100);
     </script>
     """, unsafe_allow_html=True)
-    
-    # Add manual sidebar toggle
-    if st.button("🔧 Force Show Sidebar", help="Click to force sidebar visibility"):
-        st.markdown("""
-        <script>
-        const sidebar = document.querySelector('[data-testid="stSidebar"]') || document.querySelector('.css-1d391kg');
-        if (sidebar) {
-            sidebar.style.display = 'block !important';
-            sidebar.style.visibility = 'visible !important';
-            sidebar.style.transform = 'translateX(0px) !important';
-            sidebar.style.width = '21rem !important';
-        }
-        </script>
-        """, unsafe_allow_html=True)
-        st.success("Sidebar should now be visible!")
     
     # Create header
     create_custom_header()

@@ -562,35 +562,28 @@ button[data-testid="collapsedControl"] {
     transition: margin-left 0.3s ease !important;
 }
 
-/* SIDEBAR FORCE BUT ALLOW COLLAPSE */
-[data-testid="stSidebar"]:not([aria-hidden="true"]),
-.css-1d391kg:not([aria-hidden="true"]),
-.css-1lcbmhc:not([aria-hidden="true"]),
-.stSidebar:not([aria-hidden="true"]),
-section[data-testid="stSidebar"]:not([aria-hidden="true"]) {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 21rem !important;
-    min-width: 21rem !important;
-    max-width: 21rem !important;
-    transform: translateX(0px) !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    height: 100vh !important;
-    z-index: 999998 !important;
+/* SIDEBAR STYLING - LESS AGGRESSIVE */
+[data-testid="stSidebar"],
+.css-1d391kg,
+.stSidebar {
     background: var(--secondary-bg) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    overflow-y: auto !important;
-    transition: transform 0.3s ease !important;
+    /* Remove the !important from transform to allow Streamlit to control it */
+    width: 21rem;
+    min-width: 21rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999998;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
 }
 
-/* Allow sidebar to collapse when hidden */
-[data-testid="stSidebar"][aria-hidden="true"],
-.css-1d391kg[aria-hidden="true"] {
-    transform: translateX(-100%) !important;
-    visibility: hidden !important;
+/* Ensure sidebar is visible by default but allow Streamlit to hide it */
+[data-testid="stSidebar"] {
+    display: block;
+    visibility: visible;
 }
 
 /* Main content margin when sidebar is open */
@@ -609,14 +602,7 @@ section[data-testid="stSidebar"]:not([aria-hidden="true"]) {
     margin-left: 1rem !important;
 }
 
-/* Override any hiding styles */
-[data-testid="stSidebar"][style*="display: none"],
-[data-testid="stSidebar"][style*="visibility: hidden"],
-[data-testid="stSidebar"][style*="transform: translateX(-100%)"] {
-    display: block !important;
-    visibility: visible !important;
-    transform: translateX(0px) !important;
-}
+/* Allow Streamlit's natural collapse behavior */
 
 /* Source items with code-like appearance */
 .source-item {
