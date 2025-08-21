@@ -393,21 +393,27 @@ def main():
     # Load CSS
     load_css()
     
-    # Gentle sidebar fix - only show if completely hidden
+    # Force sidebar to show with smart collapse detection
     st.markdown("""
     <script>
-    setTimeout(function() {
+    function ensureSidebarVisible() {
         const sidebar = document.querySelector('[data-testid="stSidebar"]');
         if (sidebar) {
-            // Only intervene if sidebar is completely missing/hidden
-            const computedStyle = window.getComputedStyle(sidebar);
-            if (computedStyle.display === 'none' || computedStyle.visibility === 'hidden') {
-                sidebar.style.display = 'block';
-                sidebar.style.visibility = 'visible';
-                // Don't force transform - let Streamlit control it
+            sidebar.style.display = 'block';
+            sidebar.style.visibility = 'visible';
+            
+            // Only set transform if it's completely hidden
+            const transform = window.getComputedStyle(sidebar).transform;
+            if (transform.includes('translateX(-100%)') || !transform || transform === 'none') {
+                sidebar.style.transform = 'translateX(0px)';
             }
         }
-    }, 100);
+    }
+    
+    // Run immediately and after a delay
+    ensureSidebarVisible();
+    setTimeout(ensureSidebarVisible, 100);
+    setTimeout(ensureSidebarVisible, 500);
     </script>
     """, unsafe_allow_html=True)
     

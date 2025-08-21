@@ -562,28 +562,34 @@ button[data-testid="collapsedControl"] {
     transition: margin-left 0.3s ease !important;
 }
 
-/* SIDEBAR STYLING - LESS AGGRESSIVE */
+/* SIDEBAR STYLING - BALANCED APPROACH */
 [data-testid="stSidebar"],
 .css-1d391kg,
 .stSidebar {
     background: var(--secondary-bg) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    /* Remove the !important from transform to allow Streamlit to control it */
-    width: 21rem;
-    min-width: 21rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999998;
-    overflow-y: auto;
-    transition: transform 0.3s ease;
+    width: 21rem !important;
+    min-width: 21rem !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    z-index: 999998 !important;
+    overflow-y: auto !important;
+    transition: transform 0.3s ease !important;
 }
 
-/* Ensure sidebar is visible by default but allow Streamlit to hide it */
+/* Force sidebar visible by default */
 [data-testid="stSidebar"] {
-    display: block;
-    visibility: visible;
+    display: block !important;
+    visibility: visible !important;
+    transform: translateX(0px) !important;
+}
+
+/* But allow collapse when Streamlit sets specific collapse classes/attributes */
+[data-testid="stSidebar"].css-collapsed,
+[data-testid="stSidebar"][data-collapsed="true"] {
+    transform: translateX(-100%) !important;
 }
 
 /* Main content margin when sidebar is open */
