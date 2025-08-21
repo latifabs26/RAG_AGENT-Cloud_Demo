@@ -393,54 +393,6 @@ def main():
     # Load CSS
     load_css()
     
-    # Add manual sidebar reopener
-    if "sidebar_collapsed" not in st.session_state:
-        st.session_state.sidebar_collapsed = False
-        
-    # Check if sidebar appears collapsed and add manual toggle
-    st.markdown("""
-    <div id="manual-sidebar-toggle" style="position: fixed; top: 10px; left: 10px; z-index: 999999;">
-        <button onclick="toggleSidebar()" style="
-            background: #00d4aa; 
-            color: white; 
-            border: none; 
-            border-radius: 50%; 
-            width: 40px; 
-            height: 40px; 
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
-            display: none;
-            font-size: 18px;
-        ">☰</button>
-    </div>
-    
-    <script>
-    function toggleSidebar() {
-        const sidebar = document.querySelector('[data-testid="stSidebar"]');
-        if (sidebar) {
-            const isHidden = sidebar.style.transform.includes('-100%') || 
-                           window.getComputedStyle(sidebar).transform.includes('-100%');
-            if (isHidden) {
-                sidebar.style.transform = 'translateX(0px)';
-            } else {
-                sidebar.style.transform = 'translateX(-100%)';
-            }
-        }
-    }
-    
-    // Show manual button only when sidebar is collapsed
-    setInterval(function() {
-        const sidebar = document.querySelector('[data-testid="stSidebar"]');
-        const manualBtn = document.querySelector('#manual-sidebar-toggle button');
-        if (sidebar && manualBtn) {
-            const isCollapsed = sidebar.style.transform.includes('-100%') || 
-                              window.getComputedStyle(sidebar).transform.includes('-100%');
-            manualBtn.style.display = isCollapsed ? 'block' : 'none';
-        }
-    }, 500);
-    </script>
-    """, unsafe_allow_html=True)
-    
     # Create header
     create_custom_header()
     
