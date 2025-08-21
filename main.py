@@ -393,12 +393,44 @@ def main():
     # Load CSS
     load_css()
     
-    # Add manual sidebar toggle (for when CSS fails)
-    col1, col2, col3 = st.columns([1, 8, 1])
-    with col1:
-        if st.button("☰ Menu", help="Toggle sidebar", key="sidebar_toggle"):
-            # Force refresh to show sidebar
-            st.rerun()
+    # Force sidebar visibility with JavaScript
+    st.markdown("""
+    <script>
+    // Force sidebar to show
+    setTimeout(function() {
+        const sidebar = document.querySelector('[data-testid="stSidebar"]');
+        if (sidebar) {
+            sidebar.style.display = 'block';
+            sidebar.style.visibility = 'visible';
+            sidebar.style.transform = 'translateX(0px)';
+            sidebar.style.width = '21rem';
+        }
+        
+        // Also try other selectors
+        const sidebarAlt = document.querySelector('.css-1d391kg');
+        if (sidebarAlt) {
+            sidebarAlt.style.display = 'block';
+            sidebarAlt.style.visibility = 'visible';
+            sidebarAlt.style.transform = 'translateX(0px)';
+        }
+    }, 100);
+    </script>
+    """, unsafe_allow_html=True)
+    
+    # Add manual sidebar toggle
+    if st.button("🔧 Force Show Sidebar", help="Click to force sidebar visibility"):
+        st.markdown("""
+        <script>
+        const sidebar = document.querySelector('[data-testid="stSidebar"]') || document.querySelector('.css-1d391kg');
+        if (sidebar) {
+            sidebar.style.display = 'block !important';
+            sidebar.style.visibility = 'visible !important';
+            sidebar.style.transform = 'translateX(0px) !important';
+            sidebar.style.width = '21rem !important';
+        }
+        </script>
+        """, unsafe_allow_html=True)
+        st.success("Sidebar should now be visible!")
     
     # Create header
     create_custom_header()

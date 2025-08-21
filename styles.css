@@ -562,18 +562,46 @@ button[data-testid="collapsedControl"] {
     transition: margin-left 0.3s ease !important;
 }
 
-/* Force sidebar to be visible on page load */
-.css-1d391kg {
+/* AGGRESSIVE SIDEBAR FORCE - TRY ALL POSSIBLE SELECTORS */
+[data-testid="stSidebar"],
+.css-1d391kg,
+.css-1lcbmhc,
+.stSidebar,
+section[data-testid="stSidebar"] {
     display: block !important;
     visibility: visible !important;
+    opacity: 1 !important;
     width: 21rem !important;
     min-width: 21rem !important;
     max-width: 21rem !important;
+    transform: translateX(0px) !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    z-index: 999998 !important;
+    background: var(--secondary-bg) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    overflow-y: auto !important;
 }
 
-/* Force main content to respect sidebar */
-.css-k1vhr4, .css-18e3th9 {
-    margin-left: 21rem !important;
+/* Force main content to make room for sidebar */
+.css-k1vhr4,
+.css-18e3th9,
+.css-1d391kg ~ div,
+[data-testid="stSidebar"] ~ div,
+.main .block-container {
+    margin-left: 22rem !important;
+    padding-left: 1rem !important;
+}
+
+/* Override any hiding styles */
+[data-testid="stSidebar"][style*="display: none"],
+[data-testid="stSidebar"][style*="visibility: hidden"],
+[data-testid="stSidebar"][style*="transform: translateX(-100%)"] {
+    display: block !important;
+    visibility: visible !important;
+    transform: translateX(0px) !important;
 }
 
 /* Source items with code-like appearance */
