@@ -1,6 +1,7 @@
 import streamlit as st
 import tempfile
 import time
+import uuid
 from datetime import datetime
 from pathlib import Path
 from langchain_core.messages import AIMessage, HumanMessage
@@ -390,26 +391,36 @@ def main():
         initial_sidebar_state="expanded"
     )
     
+    # Session-based isolation - each user gets their own workspace
+    if "session_id" not in st.session_state:
+        st.session_state.session_id = str(uuid.uuid4())
+        st.session_state.session_chroma_path = f"chroma_session_{st.session_state.session_id}"
+        # Show session info in development (remove in production)
+        st.sidebar.info(f"🔒 Private Session: {st.session_state.session_id[:8]}...")
+    
     # Load CSS
     load_css()
     
     # Create header
     create_custom_header()
     
-    # Initialize RAG system
+    # Initialize RAG system with session isolation
     if 'rag_initialized' not in st.session_state:
         with st.spinner("Initializing system..."):
             try:
-                st.session_state.db, st.session_state.model = initialize_rag_system()
+                # Pass session-specific path to RAG system
+                st.session_state.db, st.session_state.model = initialize_rag_system(
+                    chroma_path=st.session_state.session_chroma_path
+                )
                 st.session_state.rag_initialized = True
             except Exception as e:
                 st.error(f"Failed to initialize: {str(e)}")
                 st.stop()
     
-    # Initialize chat history
+    # Initialize chat history (session-isolated)
     if "messages" not in st.session_state:
         st.session_state.messages = []
-        welcome_msg = "👋 Welcome! I can chat, summarize, search, and analyze your documents. Upload files using the sidebar to get started."
+        welcome_msg = "👋 Welcome to your private workspace! I can chat, summarize, search, and analyze your documents. Your data is isolated from other users - upload files using the sidebar to get started."
         st.session_state.messages.append(AIMessage(welcome_msg))
     
     # Sidebar content

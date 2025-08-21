@@ -6,6 +6,7 @@ env/
 
 # ChromaDB Vector Database
 chroma/
+chroma_session_*/
 *.db
 
 # Environment Variables (contains API keys)

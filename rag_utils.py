@@ -263,15 +263,18 @@ def load_css():
         </style>
         """, unsafe_allow_html=True)
 
-def initialize_rag_system():
-    """Initialize the RAG system components"""
+def initialize_rag_system(chroma_path=None):
+    """Initialize the RAG system components with optional custom path for session isolation"""
     try:
         embedding_function = get_embedding_function()
         
-        # Ensure chroma directory exists
-        os.makedirs(CHROMA_PATH, exist_ok=True)
+        # Use custom path if provided (for session isolation), otherwise use default
+        db_path = chroma_path if chroma_path else CHROMA_PATH
         
-        db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
+        # Ensure chroma directory exists
+        os.makedirs(db_path, exist_ok=True)
+        
+        db = Chroma(persist_directory=db_path, embedding_function=embedding_function)
         
         # Initialize HuggingFace Inference model instead of Ollama
         try:
@@ -563,6 +566,7 @@ def create_custom_header():
     <div class="custom-header fade-in">
         <h1>SYNAPSE</h1>
         <p>Your Advanced RAG Assistant</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">🔒 Private Session - Your data is isolated from other users</p>
         <!-- <p>Intelligent Document Analysis • Chat • Search • Summarize</p> -->      
     </div>
     """, unsafe_allow_html=True)
