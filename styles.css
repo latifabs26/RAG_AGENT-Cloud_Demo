@@ -420,12 +420,30 @@
     background: transparent !important;
 }
 
-/* NEVER hide sidebar toggle buttons */
+/* FORCE ALL POSSIBLE SIDEBAR TOGGLE BUTTONS TO SHOW */
 button[title*="sidebar"],
 button[aria-label*="sidebar"],
-button[data-testid="collapsedControl"] {
+button[data-testid="collapsedControl"],
+button[class*="sidebar"],
+button[class*="collapse"],
+button[class*="toggle"],
+.css-1rs6os button,
+.css-1d391kg button,
+[data-testid="stSidebar"] + button,
+button:has(svg[data-testid="chevron"]),
+button:has(svg):not([key]) {
     display: block !important;
     visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 999999 !important;
+    background: var(--accent-color) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 10px !important;
 }
 
 /* Cyberpunk buttons - MAIN CONTENT ONLY - DIMMED */
