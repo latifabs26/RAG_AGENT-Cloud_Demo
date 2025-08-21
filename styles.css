@@ -562,12 +562,12 @@ button[data-testid="collapsedControl"] {
     transition: margin-left 0.3s ease !important;
 }
 
-/* AGGRESSIVE SIDEBAR FORCE - TRY ALL POSSIBLE SELECTORS */
-[data-testid="stSidebar"],
-.css-1d391kg,
-.css-1lcbmhc,
-.stSidebar,
-section[data-testid="stSidebar"] {
+/* SIDEBAR FORCE BUT ALLOW COLLAPSE */
+[data-testid="stSidebar"]:not([aria-hidden="true"]),
+.css-1d391kg:not([aria-hidden="true"]),
+.css-1lcbmhc:not([aria-hidden="true"]),
+.stSidebar:not([aria-hidden="true"]),
+section[data-testid="stSidebar"]:not([aria-hidden="true"]) {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -583,16 +583,30 @@ section[data-testid="stSidebar"] {
     background: var(--secondary-bg) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
     overflow-y: auto !important;
+    transition: transform 0.3s ease !important;
 }
 
-/* Force main content to make room for sidebar */
+/* Allow sidebar to collapse when hidden */
+[data-testid="stSidebar"][aria-hidden="true"],
+.css-1d391kg[aria-hidden="true"] {
+    transform: translateX(-100%) !important;
+    visibility: hidden !important;
+}
+
+/* Main content margin when sidebar is open */
 .css-k1vhr4,
 .css-18e3th9,
-.css-1d391kg ~ div,
-[data-testid="stSidebar"] ~ div,
 .main .block-container {
     margin-left: 22rem !important;
     padding-left: 1rem !important;
+    transition: margin-left 0.3s ease !important;
+}
+
+/* Main content margin when sidebar is collapsed */
+[data-testid="stSidebar"][aria-hidden="true"] ~ div .css-k1vhr4,
+[data-testid="stSidebar"][aria-hidden="true"] ~ div .css-18e3th9,
+[data-testid="stSidebar"][aria-hidden="true"] ~ div .main .block-container {
+    margin-left: 1rem !important;
 }
 
 /* Override any hiding styles */
