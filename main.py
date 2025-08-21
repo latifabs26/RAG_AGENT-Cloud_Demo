@@ -434,8 +434,8 @@ def main():
     st.markdown("---")
     st.markdown("""
     <div style="text-align: center; color: #64748b; font-size: 0.9rem; margin-top: 2rem;">
-        Advanced RAG Assistant - Built with Streamlit & LangChain<br>
-        Features: Intelligent Chat • Document Summarization • Advanced Search • Analytics
+        - Advanced RAG Assistant -<br>
+        Features:Intelligent Document Analysis • Smart Chat • Document Summarization • Advanced Search • Analytics
     </div>
     """, unsafe_allow_html=True)
 
