@@ -521,7 +521,7 @@ button[key="download_export_hidden"] {
     border-color: var(--accent-tertiary);
 }
 
-/* Sidebar fix - allow collapse functionality */
+/* Comprehensive sidebar fix - try all possible selectors */
 section[data-testid="stSidebar"],
 [data-testid="stSidebar"],
 .css-1d391kg, 
@@ -531,12 +531,15 @@ div[data-testid="stSidebar"] {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    /* Don't force position/transform - let Streamlit control collapse */
+    position: relative !important;
     width: 21rem !important;
     min-width: 21rem !important;
     background: var(--secondary-bg) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    transition: transform 0.3s ease !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    z-index: auto !important;
 }
 
 /* Force sidebar container to be visible */
@@ -554,10 +557,14 @@ div[data-testid="stSidebar"] {
 button[title="Close sidebar"],
 button[title="Open sidebar"],
 button[aria-label="Close sidebar"],
-button[aria-label="Open sidebar"] {
+button[aria-label="Open sidebar"],
+button[data-testid="collapsedControl"] {
     display: block !important;
     visibility: visible !important;
     pointer-events: auto !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 999999 !important;
 }
 
 /* Source items with code-like appearance */
