@@ -405,9 +405,9 @@
     border-color: #6d28d9 !important;
 }
 
-/* HIDE THE ACTUAL STREAMLIT BUTTONS */
-button[key="clear_chat_hidden"],
-button[key="download_export_hidden"] {
+/* HIDE SPECIFIC STREAMLIT BUTTONS (not sidebar buttons) */
+button[data-testid="stSidebar"] button[key="clear_chat_hidden"],
+button[data-testid="stSidebar"] button[key="download_export_hidden"] {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
@@ -527,14 +527,19 @@ button[key="download_export_hidden"] {
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Fix sidebar collapse button */
-button[title="Close sidebar"] {
+/* Fix sidebar collapse button - FORCE VISIBILITY */
+button[title="Close sidebar"],
+button[aria-label="Close sidebar"],
+button[data-testid="collapsedControl"] {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    pointer-events: auto !important;
 }
 
-button[title="Open sidebar"] {
+button[title="Open sidebar"],
+button[aria-label="Open sidebar"],
+button[data-testid="collapsedControl"] {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -548,6 +553,8 @@ button[title="Open sidebar"] {
     border-radius: 50% !important;
     width: 40px !important;
     height: 40px !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
 }
 
 /* Ensure sidebar toggle functionality */
