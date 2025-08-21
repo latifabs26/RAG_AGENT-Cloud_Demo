@@ -553,14 +553,33 @@ section[data-testid="stSidebar"][style*="display: none"],
     padding-left: 0 !important;
 }
 
-/* Sidebar toggle buttons */
+/* Sidebar toggle buttons - ensure both close and open work */
 button[title="Close sidebar"],
 button[title="Open sidebar"],
 button[aria-label="Close sidebar"],
-button[aria-label="Open sidebar"] {
+button[aria-label="Open sidebar"],
+button[data-testid="collapsedControl"] {
     display: block !important;
     visibility: visible !important;
     pointer-events: auto !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 999999 !important;
+}
+
+/* Style the open button when sidebar is collapsed */
+button[title="Open sidebar"],
+button[aria-label="Open sidebar"] {
+    background: var(--accent-color) !important;
+    color: white !important;
+    border: 2px solid var(--accent-color) !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3) !important;
 }
 
 /* Source items with code-like appearance */
