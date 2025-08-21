@@ -521,23 +521,26 @@ button[key="download_export_hidden"] {
     border-color: var(--accent-tertiary);
 }
 
-/* Sidebar fix - allow collapse functionality */
+/* Sidebar fix - less aggressive, allow desktop collapse */
 section[data-testid="stSidebar"],
 [data-testid="stSidebar"],
 .css-1d391kg, 
 .css-1lcbmhc,
 .stSidebar,
 div[data-testid="stSidebar"] {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Don't force position/transform - let Streamlit control collapse */
-    width: 21rem !important;
-    min-width: 21rem !important;
     background: var(--secondary-bg) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    transition: transform 0.3s ease !important;
+    /* Only force visibility if completely hidden (display: none) */
 }
+
+/* Only force visibility for completely hidden sidebars */
+section[data-testid="stSidebar"][style*="display: none"],
+[data-testid="stSidebar"][style*="display: none"] {
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Don't interfere with width/transform - let Streamlit handle collapse */
 
 /* Force sidebar container to be visible */
 .css-1544g2n,
