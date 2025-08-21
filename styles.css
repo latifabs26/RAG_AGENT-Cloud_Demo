@@ -509,38 +509,25 @@
     border-color: var(--accent-tertiary);
 }
 
-/* Sidebar styling - responsive */
+/* Comprehensive sidebar fix - try all possible selectors */
 section[data-testid="stSidebar"],
 [data-testid="stSidebar"],
 .css-1d391kg, 
 .css-1lcbmhc,
 .stSidebar,
 div[data-testid="stSidebar"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    width: 21rem !important;
+    min-width: 21rem !important;
     background: var(--secondary-bg) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Desktop sidebar - only force visibility, let Streamlit handle positioning */
-@media (min-width: 769px) {
-    section[data-testid="stSidebar"],
-    [data-testid="stSidebar"],
-    .css-1d391kg {
-        display: block !important;
-        visibility: visible !important;
-    }
-}
-
-/* Mobile sidebar - let Streamlit handle everything naturally */
-@media (max-width: 768px) {
-    section[data-testid="stSidebar"],
-    [data-testid="stSidebar"],
-    .css-1d391kg {
-        /* Remove all forced positioning on mobile */
-        position: relative !important;
-        width: auto !important;
-        min-width: auto !important;
-        transform: none !important;
-    }
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    z-index: auto !important;
 }
 
 /* Force sidebar container to be visible */
@@ -677,14 +664,8 @@ button[data-testid="collapsedControl"] {
     color: var(--text-primary);
 }
 
-/* Enhanced responsive design */
+/* Responsive design */
 @media (max-width: 768px) {
-    /* Header adjustments */
-    .custom-header {
-        padding: 1.5rem 1rem;
-        margin-bottom: 1rem;
-    }
-    
     .custom-header h1 {
         font-size: 2rem;
     }
@@ -693,51 +674,9 @@ button[data-testid="collapsedControl"] {
         font-size: 0.9rem;
     }
     
-    /* Content adjustments */
-    .feature-card, .chat-container, .summary-card, .search-result {
-        padding: 1rem;
-        margin: 0.5rem 0;
-        border-radius: 8px;
-    }
-    
-    /* Tab adjustments */
-    .stTabs [data-baseweb="tab"] {
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
-    }
-    
-    /* Metric cards adjustments */
-    .metric-card {
-        padding: 1rem;
-        margin: 0.25rem 0;
-    }
-    
-    .metric-value {
-        font-size: 1.5rem;
-    }
-    
-    /* Chat messages adjustments */
-    .user-message, .assistant-message {
-        padding: 1rem;
-        margin: 0.5rem 0;
-        border-radius: 12px;
-    }
-    
-    /* Source items adjustments */
-    .source-item {
-        padding: 0.5rem;
-        font-size: 0.8rem;
-        margin: 0.25rem 0;
-    }
-    
-    /* Search results adjustments */
-    .search-result {
-        padding: 0.75rem;
-    }
-    
-    .search-result-score {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.5rem;
+    .feature-card, .chat-container {
+        padding: 1.5rem;
+        margin: 1rem 0;
     }
 }
 
