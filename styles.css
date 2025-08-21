@@ -521,10 +521,46 @@ button[key="download_export_hidden"] {
     border-color: var(--accent-tertiary);
 }
 
-/* Sidebar styling */
-.css-1d391kg, .stSidebar {
-    background: var(--secondary-bg);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+/* Comprehensive sidebar fix - try all possible selectors */
+section[data-testid="stSidebar"],
+[data-testid="stSidebar"],
+.css-1d391kg, 
+.css-1lcbmhc,
+.stSidebar,
+div[data-testid="stSidebar"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    width: 21rem !important;
+    min-width: 21rem !important;
+    background: var(--secondary-bg) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    z-index: auto !important;
+}
+
+/* Force sidebar container to be visible */
+.css-1544g2n,
+.css-k1vhr4 {
+    display: flex !important;
+}
+
+/* Ensure sidebar shows in the layout */
+.css-18e3th9 {
+    padding-left: 0 !important;
+}
+
+/* Sidebar toggle buttons */
+button[title="Close sidebar"],
+button[title="Open sidebar"],
+button[aria-label="Close sidebar"],
+button[aria-label="Open sidebar"] {
+    display: block !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
 }
 
 /* Source items with code-like appearance */
