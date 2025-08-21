@@ -405,11 +405,9 @@
     border-color: #6d28d9 !important;
 }
 
-/* HIDE SPECIFIC STREAMLIT BUTTONS (not sidebar toggle buttons) */
-.stSidebar button[key="clear_chat_hidden"],
-.stSidebar button[key="download_export_hidden"],
-[data-testid="stSidebar"] button[key="clear_chat_hidden"],
-[data-testid="stSidebar"] button[key="download_export_hidden"] {
+/* HIDE THE ACTUAL STREAMLIT BUTTONS */
+button[key="clear_chat_hidden"],
+button[key="download_export_hidden"] {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
@@ -418,32 +416,6 @@
     padding: 0 !important;
     border: none !important;
     background: transparent !important;
-}
-
-/* FORCE ALL POSSIBLE SIDEBAR TOGGLE BUTTONS TO SHOW */
-button[title*="sidebar"],
-button[aria-label*="sidebar"],
-button[data-testid="collapsedControl"],
-button[class*="sidebar"],
-button[class*="collapse"],
-button[class*="toggle"],
-.css-1rs6os button,
-.css-1d391kg button,
-[data-testid="stSidebar"] + button,
-button:has(svg[data-testid="chevron"]),
-button:has(svg):not([key]) {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    position: relative !important;
-    z-index: 999999 !important;
-    background: var(--accent-color) !important;
-    color: white !important;
-    border-radius: 50% !important;
-    width: 40px !important;
-    height: 40px !important;
-    margin: 10px !important;
 }
 
 /* Cyberpunk buttons - MAIN CONTENT ONLY - DIMMED */
@@ -549,26 +521,23 @@ button:has(svg):not([key]) {
     border-color: var(--accent-tertiary);
 }
 
-/* Sidebar fix - less aggressive, allow desktop collapse */
+/* Sidebar fix - allow collapse functionality */
 section[data-testid="stSidebar"],
 [data-testid="stSidebar"],
 .css-1d391kg, 
 .css-1lcbmhc,
 .stSidebar,
 div[data-testid="stSidebar"] {
-    background: var(--secondary-bg) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    /* Only force visibility if completely hidden (display: none) */
-}
-
-/* Only force visibility for completely hidden sidebars */
-section[data-testid="stSidebar"][style*="display: none"],
-[data-testid="stSidebar"][style*="display: none"] {
     display: block !important;
     visibility: visible !important;
+    opacity: 1 !important;
+    /* Don't force position/transform - let Streamlit control collapse */
+    width: 21rem !important;
+    min-width: 21rem !important;
+    background: var(--secondary-bg) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: transform 0.3s ease !important;
 }
-
-/* Don't interfere with width/transform - let Streamlit handle collapse */
 
 /* Force sidebar container to be visible */
 .css-1544g2n,
@@ -581,33 +550,14 @@ section[data-testid="stSidebar"][style*="display: none"],
     padding-left: 0 !important;
 }
 
-/* Sidebar toggle buttons - ensure both close and open work */
+/* Sidebar toggle buttons */
 button[title="Close sidebar"],
 button[title="Open sidebar"],
 button[aria-label="Close sidebar"],
-button[aria-label="Open sidebar"],
-button[data-testid="collapsedControl"] {
+button[aria-label="Open sidebar"] {
     display: block !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    opacity: 1 !important;
-    position: relative !important;
-    z-index: 999999 !important;
-}
-
-/* Style the open button when sidebar is collapsed */
-button[title="Open sidebar"],
-button[aria-label="Open sidebar"] {
-    background: var(--accent-color) !important;
-    color: white !important;
-    border: 2px solid var(--accent-color) !important;
-    border-radius: 50% !important;
-    width: 40px !important;
-    height: 40px !important;
-    position: fixed !important;
-    top: 10px !important;
-    left: 10px !important;
-    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3) !important;
 }
 
 /* Source items with code-like appearance */
