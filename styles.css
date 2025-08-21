@@ -405,9 +405,11 @@
     border-color: #6d28d9 !important;
 }
 
-/* HIDE THE ACTUAL STREAMLIT BUTTONS */
-button[key="clear_chat_hidden"],
-button[key="download_export_hidden"] {
+/* HIDE SPECIFIC STREAMLIT BUTTONS (not sidebar toggle buttons) */
+.stSidebar button[key="clear_chat_hidden"],
+.stSidebar button[key="download_export_hidden"],
+[data-testid="stSidebar"] button[key="clear_chat_hidden"],
+[data-testid="stSidebar"] button[key="download_export_hidden"] {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
@@ -416,6 +418,14 @@ button[key="download_export_hidden"] {
     padding: 0 !important;
     border: none !important;
     background: transparent !important;
+}
+
+/* NEVER hide sidebar toggle buttons */
+button[title*="sidebar"],
+button[aria-label*="sidebar"],
+button[data-testid="collapsedControl"] {
+    display: block !important;
+    visibility: visible !important;
 }
 
 /* Cyberpunk buttons - MAIN CONTENT ONLY - DIMMED */
